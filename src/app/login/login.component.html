@@ -1,0 +1,13 @@
+<p>login works!</p>
+<form [formGroup]="myGroup" (ngSubmit)="submitLogin()">
+           <h3>Login</h3>
+           <br>
+       <div class="form-group">
+            <input formControlName="email" type="email" [(ngModel)]='email' accept=".csv">
+       </div>
+           <br>
+           <div class="form-group">
+            <input formControlName="password" type="password" [(ngModel)]='password' >
+       </div>
+<button type="submit"> submit</button>
+</form> 
