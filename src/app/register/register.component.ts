@@ -7,38 +7,38 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   email:any;
   password:any;
+  userName:any;
   myGroup:any;
   constructor(private commonService:CommonService,private router: Router) { }
- 
+
   ngOnInit() {
     this.myGroup = new FormGroup({
+      userName: new FormControl(),
       email: new FormControl(),
       password: new FormControl()
    });
   }
-
-
-  submitLogin() 
+  submitRegister() 
   {
    let value={
       email:this.email,
-      password:this.password
+      password:this.password,
+      userName:this.userName,
     }
-    alert(value)
-    console.log('login',value);
+    console.log('register',value);
     // let TokenHeader={token:"sdfcsg"}
-    this.commonService.callingpostapi("api/users/login", value )
+    this.commonService.callingpostapi("api/users/register", value )
     .subscribe((resp) => {
       console.log('resp get',resp)
-      localStorage.setItem('token',resp.user.token);
-      this.router.navigate(['/dashboard']);
+      // localStorage.setItem('token',resp.user.token);
+      this.router.navigate(['/login']);
     });
   }
 }

@@ -60,7 +60,7 @@ callingpostapi(url,value:any,TokenHeader?:any):Observable<any>
 
   }
 
-  callingpatchapi(url,value:any):Observable<any>
+  callingpatchapi(url,value:any,TokenHeader?:any):Observable<any>
     {
       let body:HttpParams = new HttpParams();
       if(value)
@@ -87,14 +87,20 @@ callingpostapi(url,value:any,TokenHeader?:any):Observable<any>
         return Observable.throw(error.message||"Server Error")
     }
 
-  uploadImage(url,file):Observable<any>
+  uploadImage(url,file,TokenHeader?:any):Observable<any>
   {
-
     var formData: any = new FormData();
-    formData.append("filetoupload", file, file.name);
-    const headers = new HttpHeaders();
+    formData.append("filetoupload", file.file, file.file.name);
+    formData.append("caption", file.textField);
+    var headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
+    if(TokenHeader)
+      {
+        Object.keys(TokenHeader).forEach(function(key) {
+          headers= headers.append(key, TokenHeader[key]);
+         });
+      }
 
     return this._http.post(constants.apiBaseURL + url, formData, {
       reportProgress: true,

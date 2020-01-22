@@ -10,12 +10,16 @@ import {CommonService} from './services/common.service'
 import { NgxLoadingModule } from 'ngx-loading';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { TimelineComponent } from './timeline/timeline.component';
 @NgModule({
   declarations: [
     AppComponent,
     UploadCsvComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,

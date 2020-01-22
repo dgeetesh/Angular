@@ -21,11 +21,9 @@ export class DashboardComponent implements OnInit {
   }
   first() 
   {
-    console.log('token');
     let token=localStorage.getItem('token');
     let TokenHeader={token:token};
-    console.log('TokenHeader',TokenHeader);
-    this.commonService.callinggetapi("api/users/current",TokenHeader)
+    this.commonService.callinggetapi("api/users/getAllPosts",TokenHeader)
     .subscribe((resp) => {
       console.log('resp',resp);
       // localStorage.setItem('token',resp.token);

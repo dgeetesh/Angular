@@ -1,0 +1,15 @@
+<p>register works!</p>
+<form [formGroup]="myGroup" (ngSubmit)="submitRegister()">
+    <h3>register</h3>
+    <br>
+        <div class="form-group">
+            <input formControlName="email" type="email" [(ngModel)]='email' placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input formControlName="userName" type="text" [(ngModel)]='userName' placeholder="User Name">
+        </div>
+        <div class="form-group">
+            <input formControlName="password" type="password" [(ngModel)]='password' placeholder="Password">
+        </div>
+    <button type="submit"> submit</button>
+</form> 
